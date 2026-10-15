@@ -4,3 +4,6 @@ build/
 # Scratch Files
 scratch*
 *.scratch
+
+# Clangd Cache
+.cache/
