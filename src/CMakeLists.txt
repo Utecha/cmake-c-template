@@ -1,22 +1,18 @@
-# Set the C standard and whether you want extensions enabled.
-set(CMAKE_C_STANDARD 99)
-set(CMAKE_C_STANDARD_REQUIRED OFF)
-set(CMAKE_C_EXTENSIONS OFF)
-
 # Add the library/executable target(s).
-add_executable(${PNAME})
-
-#-------------------------------------------------------------------------------
+add_executable(${EXAMPLE})
 
 # Add source files to the target.
 target_sources(
-    ${PNAME} PRIVATE
+    ${EXAMPLE} PRIVATE
     main.c
 )
 
 # Set the output directory for the target.
 set_target_properties(
-    ${PNAME} PROPERTIES
+    ${EXAMPLE} PROPERTIES
+    C_STANDARD 99
+    C_STANDARD_REQUIRED OFF
+    C_EXTENSIONS OFF
     ARCHIVE_OUTPUT_DIRECTORY ${OUTPUT_DIRECTORY}
     LIBRARY_OUTPUT_DIRECTORY ${OUTPUT_DIRECTORY}
     RUNTIME_OUTPUT_DIRECTORY ${OUTPUT_DIRECTORY}
@@ -24,12 +20,12 @@ set_target_properties(
 
 # Add any necessary include directories.
 # target_include_directories(
-#     ${PNAME} PRIVATE
+#     ${EXAMPLE} PRIVATE
 # )
 
 # Add compiler flags by compiler toolchain.
 target_compile_options(
-    ${PNAME} PRIVATE
+    ${EXAMPLE} PRIVATE
     $<$<C_COMPILER_ID:Clang,GNU>:
         -Wall
         -Wextra
@@ -54,6 +50,6 @@ target_compile_options(
 # Add definitions to the compiler flags. These are macros which can be used from
 # code to control features or compile code conditionally.
 target_compile_definitions(
-    ${PNAME} PRIVATE
+    ${EXAMPLE} PRIVATE
     $<$<CONFIG:Debug>:DEBUG>
 )

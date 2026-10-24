@@ -2,19 +2,22 @@ cmake_minimum_required(VERSION 3.20)
 
 #-------------------------------------------------------------------------------
 
-set(PNAME example)
-set(PVERS 0.0.1)
+set(EXAMPLE example)
+set(VERSION 0.0.1)
 
 project(
-    ${PNAME}
-    VERSION ${PVERS}
+    ${EXAMPLE}
+    VERSION ${VERSION}
     DESCRIPTION "An Example C Project Template"
     LANGUAGES C
 )
 
-message("--- ${PROJECT_NAME} Version ${CMAKE_PROJECT_VERSION} ---")
+message("--- ${EXAMPLE} Version ${VERSION} ---")
 
 #-------------------------------------------------------------------------------
+
+# Add the local 'cmake' directory to the CMake module path.
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
 # Exports compile commands for your LSP.
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
